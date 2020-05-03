@@ -13,9 +13,27 @@ class Dynamic_array:
         self.storage[self.count]=value
         #increment count
         self.count += 1
+
+        print(self.storage)
         return
         
+    def insert(self,index,value):
+        #check if capacity  reach
+        if self.count >= self.capacity:
+            self.__resize__()
+        
+        #shift elements to the right of index
+        for i in range(self.count,index,-1):
+            self.storage[i]=self.storage[i-1]
 
+        #insert the element at the position
+        self.storage[index]=value
+
+        #increment count
+        self.count += 1
+
+        print(self.storage)
+        return
 
     def __resize__(self):
         #Double the capacity
@@ -32,4 +50,12 @@ class Dynamic_array:
         #Make the old storage the new storage
         self.storage=new_storage
 
-Dynamic_array.append(Dynamic_array,10)
+
+def appending():
+    for i in range(10):
+        Dynamic_array.append(Dynamic_array(),i)
+
+    return
+
+appending()
+
